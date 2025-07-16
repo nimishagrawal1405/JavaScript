@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <p class="item"> Item 1</p>
+        <p class="item"> Item 2</p>
+    </div>
+
+    <button onclick="addItem()">Add Item</button>
+
+    <script type="text/javascript">
+        let child = document.querySelectorAll(".item");
+        function addItem(){ //adds an item in the DOM
+                let p = document.createElement("p"); //creating an element p
+                p.className = "item"; //giving the new element a classname called item
+                p.textContent = 'Item ' + (child.length + 1); //adding text to the new element
+                document.getElementById("container").appendChild(p); //appending the new element to the container
+                 console.log(child.length); //logs the NodeList of items
+        }
+        console.log(child.length); //logs the NodeList of items
+    </script>
+</body>
+</html>

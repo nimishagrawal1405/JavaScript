@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box" id="main">
+        <p class="box">Hello</p>
+        <p class="box">World</p>
+    </div>
+    <script type="text/javascript">
+
+        let arr = document.getElementsByClassName("box"); //HTMLCollection
+        console.log(arr); // gives the HTMLCollection not an array
+        console.log(Array.isArray(arr)); // Checks arr is an array or not 
+        console.log(Array.isArray(Array.from(arr))); //Converting HTMLCollection [] to arr and checking it
+        let arr1 = Array.from(arr); // converting HTMLCollection to array and storing it in arr1
+        arr1.forEach(function (element){ // for each element in arr1 implementing a function in which changing their style 
+            element.style.color = 'blue';
+            element.style.fontSize = '25px'
+            element.style.fontFamily = 'Brush Script MT';
+        })
+
+        let arr2 = document.querySelectorAll(".box"); // stores a NodeList [] in arr2 
+        console.log(arr2); // Already in Array no need to convert
+        arr2.forEach(function(element){ // accessing elements through array
+            element.style.color ='red';
+        });
+
+    </script>
+</body>
+</html>
