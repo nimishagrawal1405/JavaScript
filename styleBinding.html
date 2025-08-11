@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <dl>
+        <dt>
+            UserName
+        </dt>
+        <dd>
+            <input type="text" id="textFeild" class="userName">
+        </dd>
+        <dd id="displayMessage">
+
+        </dd>
+    </dl>
+
+    <script type="text/javascript">
+        document.getElementById("textFeild").addEventListener("keyup", function(){
+            let data = this.value.length;
+            const msg = document.getElementById("displayMessage");
+
+             if (data === 0) {
+                    msg.textContent = 'Name required';
+                    msg.className = 'red';
+                } else if (data < 4) {
+                    msg.textContent = 'Name too Short';
+                    msg.className = 'text-warning fs-3 fw-bold'
+                } else {
+                    msg.textContent = '';
+                }
+
+        })
+
+    </script>
+</body>
+</html>
