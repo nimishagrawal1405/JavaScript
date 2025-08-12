@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <table border="1" cellspacing="3" cellpadding="3" width="20%" align="center">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+
+        function getProduct(){
+            const URL = 'data/productfn.json';
+            return fetch(URL);
+        }
+
+       async function consumeProduct(){
+            try{
+            let response = await getProduct();
+            let productfn = await response.json();
+            console.log(productfn);
+            
+            <!--UI ELEMENTS-->
+
+            const tbody = document.querySelector("tbody");
+            let tr = document.createElement("tr");
+            
+            let tname =  document.createElement("td");
+            tname.textContent = productfn.name;
+
+            let tceo = document.createElement("td");
+            tceo.textContent = productfn.ceo;
+
+            let tmf = document.createElement("td");
+            tmf.textContent = productfn.mf;
+
+            let tcountry = document.createElement("td");
+            tcountry.textContent = productfn.country;
+
+            tr.append(tname, tceo, tmf, tcountry);
+            tr.align = 'center';
+            tbody.appendChild(tr);
+            }
+            catch(error){
+                    console.log(error);
+            }
+            
+        }
+        consumeProduct();
+    </script>
+</body>
+
+</html>

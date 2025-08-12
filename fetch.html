@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <table border="1" cellspacing="3" cellpadding="3" width="20%" align="center">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+       const URL = 'data/product.json';
+
+       fetch(URL)
+       .then(function(response){
+        return response.json();
+       })
+       .then(function(product){
+        console.log(product);
+
+        <!--UI ELEMENTS-->
+        const tbody = document.querySelector("tbody");
+
+        let tr = document.createElement("tr");
+
+        let tname = document.createElement("td");
+        tname.textContent = product.name;
+
+        let tprice = document.createElement("td");
+        tprice.textContent = product.price;
+
+        let ttype = document.createElement("td");
+        ttype.textContent = product.type;
+
+        tr.append(tname, tprice, ttype);
+        tr.align = 'center';
+        tbody.appendChild(tr);
+        
+       })
+       .catch(function(error){
+        console.log(error);
+       })
+
+    </script>
+</body>
+
+</html>
